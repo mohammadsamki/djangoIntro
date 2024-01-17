@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+{% block title %}Book List ?{% endblock %}
+
+{% block content %}
+        <h1>Book List</h1>
+
+        <ol>
+        {% if bookList %}
+
+            {% for item in bookList %}
+            <li> <a href="{{ item.get_absolute_url }}">{{ item.title }} </a></li>
+            {% endfor %}
+        {% else %}
+        <h2>No books found</h2>
+        {% endif %}
+        </ol>
+{% endblock %}
