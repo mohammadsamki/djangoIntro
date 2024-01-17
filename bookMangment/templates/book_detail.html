@@ -1,4 +1,5 @@
 {% extends 'base.html'%}
+{% block header %}Book Info{% endblock %}
 {% block title %}Book Info{% endblock %}
 
 {% block content %}
@@ -6,7 +7,7 @@
 
         <h2>{{ book.title }}</h2>
         <h2>{{ book.author }}</h2>
-        <h2>{{ book.gener }}</h2>
+        <h2>{{ book.display_genre }}</h2>
         <h2>{{ book.summery }}</h2>
 
 {% endblock %}

@@ -4,38 +4,133 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
+    {% load static %}
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>{% block title %}{% endblock %}</title>
-
+        {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./base.css">
+        <link rel="stylesheet" href="{% static 'style/base.css' %}">
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div id='nav'>
-            <h1>welcome to our library!</h1>
-            <div id='navButton'>
-                <a href="{% url 'home' %}"><button>home</button></a>
-                <a href="{% url 'bookList' %}"><button>book list</button></a>
-                <a><button>author list</button></a>
-            </div>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                    <a class="navbar-brand" href="#">{% block header %}{% endblock %}</a>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'bookList' %}">Book List</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Autor List</a>
+                      </li>
+                      {% comment %} <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                      </li> {% endcomment %}
+                    </ul>
+                    <form class="d-flex">
+                      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                  </div>
+                </div>
+              </nav>
+
         </div>
         <div id='content'>
             {% block content %}{% endblock %}
-        </div>
+            </div>
       <div id='footer'>
-        <h1>footer</h1>
-        <div id='footerButton'>
-            <a><button>home</button></a>
-            <a><button>book list</button></a>
-            <a><button>author list</button></a>
+        <footer class="text-center bg-body-tertiary">
+            <!-- Grid container -->
+            <div class="container pt-4">
+              <!-- Section: Social media -->
+              <section class="mb-4">
+                <!-- Facebook -->
+                <a
+                  data-mdb-ripple-init
+                  class="btn btn-link btn-floating btn-lg text-body m-1"
+                  href="#!"
+                  role="button"
+                  data-mdb-ripple-color="dark"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
 
-        </div>
+                <!-- Twitter -->
+                <a
+                  data-mdb-ripple-init
+                  class="btn btn-link btn-floating btn-lg text-body m-1"
+                  href="#!"
+                  role="button"
+                  data-mdb-ripple-color="dark"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+
+                <!-- Google -->
+                <a
+                  data-mdb-ripple-init
+                  class="btn btn-link btn-floating btn-lg text-body m-1"
+                  href="#!"
+                  role="button"
+                  data-mdb-ripple-color="dark"
+                  ><i class="fab fa-google"></i
+                ></a>
+
+                <!-- Instagram -->
+                <a
+                  data-mdb-ripple-init
+                  class="btn btn-link btn-floating btn-lg text-body m-1"
+                  href="#!"
+                  role="button"
+                  data-mdb-ripple-color="dark"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+
+                <!-- Linkedin -->
+                <a
+                  data-mdb-ripple-init
+                  class="btn btn-link btn-floating btn-lg text-body m-1"
+                  href="#!"
+                  role="button"
+                  data-mdb-ripple-color="dark"
+                  ><i class="fab fa-linkedin"></i
+                ></a>
+                <!-- Github -->
+                <a
+                  data-mdb-ripple-init
+                  class="btn btn-link btn-floating btn-lg text-body m-1"
+                  href="#!"
+                  role="button"
+                  data-mdb-ripple-color="dark"
+                  ><i class="fab fa-github"></i
+                ></a>
+              </section>
+              <!-- Section: Social media -->
+            </div>
+            <!-- Grid container -->
+
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+              © 2024 Copyright:
+              <a class="text-body" >Local Library</a>
+            </div>
+            <!-- Copyright -->
+          </footer>
+
     </div>
 
 

@@ -1,5 +1,31 @@
  {% extends "base.html" %}
+
+
  {% block title %}Home{% endblock %}
+ {% block header %}Home{% endblock %}
  {% block content %}
-<h1>test </h1>
+ {% load static %}
+
+ <link rel="stylesheet" href="{% static 'style/home.css' %}">
+ <div width="700px" id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://images.indianexpress.com/2021/06/Untitled-design-4-1.png" class="d-block w-70" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://png.pngtree.com/background/20230427/original/pngtree-an-old-library-or-book-room-with-some-books-and-plants-picture-image_2496727.jpg" class="d-block w-70" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.carnegielibrary.org/wp-content/uploads/2021/09/Boy-Reading-in-Library_1080x600.jpg" class="d-block w-70" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
  {% endblock %}

@@ -1,0 +1,15 @@
+body{
+    background-color: gray;
+}
+#footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.bookItems{
+    text-decoration-line: blink;
+}
+.list-group{
+    width: 60%;
+}

@@ -1,15 +1,26 @@
 {% extends 'base.html'%}
 {% block title %}Book List ?{% endblock %}
-
+{% block header %}Book List{% endblock %}
 {% block content %}
         <h1>Book List</h1>
 
+
+
         <ol>
         {% if bookList %}
+        <div class="list-group list-group-light">
 
             {% for item in bookList %}
-            <li> <a href="{{ item.get_absolute_url }}">{{ item.title }} </a></li>
+
+            <a class='bookItems' href="{{ item.get_absolute_url }}"><button type="button" class="list-group-item list-group-item-action px-3 border-0">
+                {{ item.title }}
+                </button>
+            </a>
+
+
             {% endfor %}
+        </div>
+
         {% else %}
         <h2>No books found</h2>
         {% endif %}
