@@ -1,3 +1,6 @@
+from datetime import date
+
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 
@@ -31,8 +34,10 @@ class Book(models.Model):
 
     def get_absolute_url(self):
         return reverse("book_detail", kwargs={"pk": self.pk})
+
     def display_genre(self):
         return ', '.join(self.gener.__str__())
+
     def __str__(self):
         return self.title
 
@@ -58,7 +63,8 @@ class BookInstance(models.Model):
     book = models.ForeignKey('Book', on_delete=models.RESTRICT, null=True)
     imprint = models.CharField(max_length=200)
     due_back = models.DateField(null=True, blank=True)
-
+    brower = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    loanPrice = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     LOAN_STATUS = (
         ('m', 'Maintenance'),
         ('o', 'On loan'),
@@ -80,3 +86,29 @@ class BookInstance(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return f'{self.id} ({self.book.title})'
+
+    def is_overdue(self):
+        """Check if this book is overdue."""
+
+        return bool(self.due_back and date.today() > self.due_back)
+    def loanPriceValue(self):
+        if bool(self.due_back and date.today() > self.due_back):
+            self.loanPrice= self.loanPrice+2
+            return f'{self.loanPrice} > 2$ was added coz its overdue'
+        return self.loanPrice
+
+    # def __init__(self):
+    #     if bool(self.due_back and date.today() > self.due_back):
+    #         self.loanPrice= self.loanPrice+2
+# models.py
+
+from django.db import models
+from django.contrib.auth.models import User
+
+class Playlist(models.Model):
+    title = models.CharField(max_length=200)
+    youtube_playlist_id = models.CharField(max_length=200)
+    users = models.ManyToManyField(User, related_name='playlists')
+
+    def __str__(self):
+        return self.title

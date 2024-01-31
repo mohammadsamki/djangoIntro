@@ -1,0 +1,14 @@
+<!-- user_playlists.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Your Playlists</h2>
+  <ul>
+    {% for playlist in playlists %}
+      <li>
+        <a href="{% url 'playlist_videos' playlist.id %}">{{ playlist.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

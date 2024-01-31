@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+
+{% block title %}User Books Page{% endblock %}
+{% block header %}User Books Page{% endblock %}
+{% block content %}
+{% load static %}
+
+<h1> User Books Page</h1>
+{% if userBooksList %}
+<ol>
+
+{% for i in userBooksList %}
+    <li>
+<h2> Book name :{{ i.book }}</h2>
+<h2>imprint: {{ i.imprint }}</h2>
+<h2>due_back: {{ i.due_back }}</h2>
+<h2>brower: {{ i.brower }}</h2>
+<h2>loanPrice: {{ i.loanPriceValue }}</h2>
+<h2>status: {{ i.status }}</h2>
+</li>
+
+{% endfor %}
+</ol>
+{% else %}
+<h2>No Books Available</h2>
+{% endif %}
+
+
+
+{% endblock %}

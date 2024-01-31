@@ -1,0 +1,11 @@
+body{
+    /* background-color: black; */
+
+}
+.carousel-inner{
+    width: 80%;
+}
+.carousel-item{
+    margin-left: 27%;
+    
+}

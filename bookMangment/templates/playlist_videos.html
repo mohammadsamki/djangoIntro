@@ -1,0 +1,15 @@
+<!-- playlist_videos.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Videos</h2>
+  <ul>
+    {% for video in videos %}
+      <li>
+        <h3>{{ video.title }}</h3>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video.video_id }}" frameborder="0" allowfullscreen></iframe>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

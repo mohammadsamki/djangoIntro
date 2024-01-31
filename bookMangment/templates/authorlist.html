@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+
+{% block title %}author Page{% endblock %}
+{% block header %}author Page{% endblock %}
+{% block content %}
+{% load static %}
+
+<h1> author Page</h1>
+{% comment %} {{  }} {% endcomment %}
+{% for auth in authDeatels %}
+<h1>author firstName :  {{ auth.author.firstName }}</h1>
+{% comment %} <h1>author lastName :  {{ auth.books[0].title }}</h1> {% endcomment %}
+{% for j in auth.books %}
+<h1>book title :  {{ j.title }}</h1>
+{% endfor %}
+{% endfor %}
+
+{% endblock %}

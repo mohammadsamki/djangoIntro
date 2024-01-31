@@ -36,13 +36,40 @@
                         <a class="nav-link" href="{% url 'bookList' %}">Book List</a>
                       </li>
                       <li class="nav-item">
+                        <a class="nav-link" href="{% url 'userBooks' %}">user Books</a>
+                      </li>
+                      <li class="nav-item">
                         <a class="nav-link" href="#">Autor List</a>
                       </li>
+
+                      {% if type == 'staff' %}
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'staffPage' %}">staff Button</a>
+                      </li>
+                      {% elif  type == 'normalUser' %}
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'userPage' %}">normal User Button</a>
+                      </li>
+                      {% elif type == 'libraryManager' %}
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'managerPage' %}">library Manager Button</a>
+                      </li>
+                      {% endif %}
+                      {% if user.is_authenticated %}
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                      </li>
+                      {% else %}
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                      </li>
+                      {% endif %}
                       {% comment %} <li class="nav-item">
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                       </li> {% endcomment %}
                     </ul>
                     <form class="d-flex">
+
                       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                       <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
@@ -52,6 +79,13 @@
 
         </div>
         <div id='content'>
+          {% if user.is_authenticated %}
+          <h1>Welcome : {{ user.username }} </h1>
+
+          {% else %}
+          <h1>Please Login </h1>
+
+          {% endif %}
             {% block content %}{% endblock %}
             </div>
       <div id='footer'>
